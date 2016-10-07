@@ -7,7 +7,8 @@ class ChargesController < ApplicationController
     contact = Contact.find params[:contact_id]
 
     stripe_customer = Stripe::Customer.create(
-      description: "Paid by #{contact.name}",
+      email: "#{contact.email}",
+      description: "#{contact.name}",
       source: params[:stripe_token]
     )
     stripe_charge = Stripe::Charge.create(
@@ -19,6 +20,7 @@ class ChargesController < ApplicationController
 
     contact.stripe_transaction_id = stripe_charge.id
     contact.save
+
     ContactsMailer.notify_owner(contact).deliver_now
     redirect_to root_path, notice: "Payment completed / Message Sent!"
   end

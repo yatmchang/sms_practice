@@ -24,6 +24,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rails-controller-testing'
+  gem 'stripe-ruby-mock'
 end
 
 group :development do
