@@ -9,7 +9,10 @@ RSpec.describe ChargesController, type: :controller do
   describe "#create" do
     context "with valid attributes" do
       def valid_request
-        post :create, charge: FactoryGirl.attributes_for(:charge)
+        post :create, charge: {number: 4012888888881881,
+                               cvc: 100,
+                               exp_year: 18,
+                               exp_month: 11}
       end
 
       # it "sends an e-mail" do

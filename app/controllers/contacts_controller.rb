@@ -9,6 +9,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new contact_params
     if @contact.save
       redirect_to new_contact_charge_path(@contact)
+      ContactsMailer.notify_owner(@contact).deliver_now
     else
       redirect_to new_contact_path, notice: "An error occured"
     end

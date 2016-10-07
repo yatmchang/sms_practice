@@ -17,7 +17,11 @@ RSpec.describe ContactsController, type: :controller do
   describe "#create" do
     context "with valid attributes" do
       def valid_request
-        post :create, contact: FactoryGirl.attributes_for(:contact)
+        post :create, contact: {name: "Yat",
+                                email: "yat@m.com",
+                                message: "Test",
+                                address: "8180 Bennett Road,Richmond",
+                                amount: 10}
       end
 
       it "creates a record in the database" do
@@ -27,9 +31,9 @@ RSpec.describe ContactsController, type: :controller do
         expect(count_after).to eq(count_before +1)
       end
 
-      # it "sends an e-mail" do
-      #   expect { valid_request }.to change{ActionMailer::Base.deliveries.count}.by(1)
-      # end
+      it "sends an e-mail" do
+        expect { valid_request }.to change{ActionMailer::Base.deliveries.count}.by(1)
+      end
 
     end
   end
