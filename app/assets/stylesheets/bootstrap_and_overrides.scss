@@ -1,0 +1,25 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.navbar {
+  height: 60px;
+  position: relative;
+  margin-bottom: 0px;
+  background-color: #1aa79c;
+  color: white;
+}
+.navbar .navbar-nav > li > a {
+  color: white;
+}
+
+.navbar .navbar-nav > li > a:focus {
+  color: white;
+}
+
+.navbar .navbar-nav > li > a:hover {
+  color: white;
+}
+
+.navbar .navbar-nav > li > a:active {
+  color: white;
+}
