@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <%= link_to "Home", root_path %>
+    |
+    <%= link_to "New", new_contact_path %>
+    <hr>
+    <% if flash[:notice] %>
+      <div class="flash-notice"><%= flash[:notice] %></div>
+    <% elsif flash[:alert] %>
+      <div class="flash-alert"><%= flash[:alert] %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
