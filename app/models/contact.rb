@@ -3,4 +3,8 @@ class Contact < ApplicationRecord
   validates :message, presence: true
   validates :email, presence: true,
                   format: /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  validates :address, presence: true
+
+  geocoded_by :address
+  after_validation :geocode
 end
